@@ -1,0 +1,4 @@
+[2026-09-20 02:01:14] INFO - Starting task load_orders
+[2026-09-20 02:01:20] INFO - Reading gs://demo-bucket/orders/2026-09-20.csv
+[2026-09-20 02:01:21] ERROR - FileNotFoundError: gs://demo-bucket/orders/2026-09-20.csv not found
+[2026-09-20 02:01:21] ERROR - Task failed after 3 retries
