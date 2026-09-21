@@ -1,13 +1,8 @@
 """Log explainer v0: one call, no tools yet."""
-import os
 import sys
 from pathlib import Path
-from anthropic import Anthropic
-from dotenv import load_dotenv
 
-load_dotenv()
-MODEL = os.getenv("MODEL", "claude-haiku-4-5-20251001")
-client = Anthropic()
+from llm import call_model
 
 # System prompt = the agent's role and output contract.
 SYSTEM = (
@@ -23,11 +18,10 @@ PRICE_IN, PRICE_OUT = 1.0, 5.0
 
 
 def explain(log_text: str) -> str:
-    resp = client.messages.create(
-        model=MODEL,
-        max_tokens=500,
-        system=SYSTEM,  # the role/contract goes here, not in messages
+    resp = call_model(
         messages=[{"role": "user", "content": f"Diagnose this log:\n\n{log_text}"}],
+        system=SYSTEM,
+        max_tokens=500,  # your original cap; default in llm.py is 400
     )
     u = resp.usage
     cost = (u.input_tokens * PRICE_IN + u.output_tokens * PRICE_OUT) / 1_000_000
