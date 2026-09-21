@@ -1,0 +1,7 @@
+[2026-03-02 02:14:07] {taskinstance.py:1103} INFO - Executing <Task(DataprocSubmitJobOperator): transform_orders>
+[2026-03-02 02:14:09] {dataproc.py:212} INFO - Submitting PySpark job to cluster demo-cluster
+[2026-03-02 02:31:44] ERROR - Container killed by YARN for exceeding memory limits. 10.2 GB of 10 GB physical memory used.
+[2026-03-02 02:31:44] ERROR - Consider boosting spark.executor.memoryOverhead.
+[2026-03-02 02:31:45] {taskinstance.py:1826} ERROR - Task failed with exception
+airflow.exceptions.AirflowException: Dataproc job failed with state: ERROR
+[2026-03-02 02:31:45] {taskinstance.py:1345} INFO - Marking task as FAILED. dag_id=orders_daily, task_id=transform_orders, try_number=1
